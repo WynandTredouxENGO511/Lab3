@@ -104,10 +104,10 @@
                         var PageResponsestr = CalgaryFeatures.data.features.length + ' permits found within the selected date range.';
                         if (nulls > 1) {
                             PageResponsestr += ' ' + nulls + ' have no location data and cannot be displayed';
-                        }else if (nulls > 0){
-							PageResponsestr += ' ' + nulls + ' has no location data and cannot be displayed';
-						}
-						
+                        } else if (nulls > 0) {
+                            PageResponsestr += ' ' + nulls + ' has no location data and cannot be displayed';
+                        }
+
                         document.getElementById("PageResponse").innerHTML = PageResponsestr;
                         console.log(count);
 
@@ -146,18 +146,29 @@
             zoomOffset: -1,
             accessToken: 'pk.eyJ1Ijoid3luYW5kdHJlZG91eCIsImEiOiJjazdjaGZndzAwZXVtM21teThqZjhsdzBiIn0.MwhI6rhhXpMJ0LkjhXDUHg'
         });
+        // traffic incident layer
+        var traffic = L.tileLayer('https://api.mapbox.com/styles/v1/{username}/{styleID}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            username: 'wynandtredoux',
+            styleID: 'ck7makkyj0k8f1jm2ciezqii2',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1Ijoid3luYW5kdHJlZG91eCIsImEiOiJjazdjaGU5bmwwMWQxM2dwMTdveXF2cTQ2In0.KWTf4vgwgq60Px7gP9eaBQ'
+        });
 
         var layers = {
             'Street View': street,
-            'Satellite View': sat
+            'Satellite View': sat,
+        };
+        var overlay = {
+            'Traffic Incident Heatmap': traffic
         };
         // display map
-        L.control.layers(layers).addTo(mymap);
+        L.control.layers(layers, overlay).addTo(mymap);
 
         // markers.on('click', function(a) {
         //     console.log(a);
         // });
     </script>
-	<p style="text-align: right; margin-right: 10px;">The map can be vertially resized by dragging the bottom right corner!</p>
+    <p style="text-align: right; margin-right: 10px;">The map can be vertially resized by dragging the bottom right corner!</p>
     <div class="padding" style="margin-top: 150px;"></div>
 </body>
