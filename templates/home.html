@@ -146,7 +146,7 @@
             zoomOffset: -1,
             accessToken: 'pk.eyJ1Ijoid3luYW5kdHJlZG91eCIsImEiOiJjazdjaGZndzAwZXVtM21teThqZjhsdzBiIn0.MwhI6rhhXpMJ0LkjhXDUHg'
         });
-        // traffic incident layer
+        //Basic traffic incident layer
         var traffic = L.tileLayer('https://api.mapbox.com/styles/v1/{username}/{styleID}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             username: 'wynandtredoux',
             styleID: 'ck7makkyj0k8f1jm2ciezqii2',
@@ -155,12 +155,32 @@
             accessToken: 'pk.eyJ1Ijoid3luYW5kdHJlZG91eCIsImEiOiJjazdjaGU5bmwwMWQxM2dwMTdveXF2cTQ2In0.KWTf4vgwgq60Px7gP9eaBQ'
         });
 
+        // new street view
+        var street_new = L.tileLayer('https://api.mapbox.com/styles/v1/{username}/{styleID}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            username: 'wynandtredoux',
+            styleID: 'ck7p4sz2a08x51io79sstt3gt',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1Ijoid3luYW5kdHJlZG91eCIsImEiOiJjazdjaGU5bmwwMWQxM2dwMTdveXF2cTQ2In0.KWTf4vgwgq60Px7gP9eaBQ'
+        });
+
+        // new heatmap
+        var traffic_new = L.tileLayer('https://api.mapbox.com/styles/v1/{username}/{styleID}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            username: 'wynandtredoux',
+            styleID: 'ck7p50k4t06681imovjajgjpk',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1Ijoid3luYW5kdHJlZG91eCIsImEiOiJjazdjaGU5bmwwMWQxM2dwMTdveXF2cTQ2In0.KWTf4vgwgq60Px7gP9eaBQ'
+        });
+
         var layers = {
-            'Street View': street,
+            'Basic Street View': street,
+            '*New and Improved* Street View': street_new,
             'Satellite View': sat,
         };
         var overlay = {
-            'Traffic Incident Heatmap': traffic
+            'Traffic Incident Heatmap': traffic,
+            '*New and Improved* Traffic Incident Heatmap': traffic_new
         };
         // display map
         L.control.layers(layers, overlay).addTo(mymap);
