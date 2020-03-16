@@ -4,7 +4,7 @@ Author: Wynand Tredoux
 UCID: 30020515
 
 # Objective
-
+To create custom layers that can be toggeled using Mapbox, and display them on our own webpage
 
 # Files and Folders
 	application.py - flask application to handle http requests to the site
@@ -17,3 +17,4 @@ UCID: 30020515
 	/static/img - folder containing any images used on the site
 
 # Video Demo
+https://youtu.be/zac7sbeC4vA
